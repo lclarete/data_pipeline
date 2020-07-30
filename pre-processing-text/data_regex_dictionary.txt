@@ -1,0 +1,15 @@
+dict_regex = {
+    'hashtags': r'#\w',
+    'mentions': r'@(\w+)',
+    'emails': r'',
+    'links': r'https?:\/\/.*[\r\n]*',
+    'numbers': r'\d+',
+    'symbols': r'',
+    'punctionation2': '[^\w\s]',
+    'punctionation': '[%s]' % re.escape(string.punctuation),
+    'periods': '\.',
+    'exclamation points': '\!',
+    'question marks': '\?' 
+    }
+
+

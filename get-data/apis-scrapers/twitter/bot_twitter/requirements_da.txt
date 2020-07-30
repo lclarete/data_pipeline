@@ -1,0 +1,12 @@
+google-api-python-client==1.7.11
+google-auth==1.10.1
+ipython==7.11.1
+jupyter==1.0.0
+matplotlib==3.1.2
+pandas==0.25.3
+pygsheets==2.0.2
+scipy==1.4.1
+seaborn==0.9.0
+snowballstemmer==2.0.0
+twitter==1.18.0
+TwitterFollowBot==2.0.2
