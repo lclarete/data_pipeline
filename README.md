@@ -1,3 +1,18 @@
+# Next steps:
+
+Currently working on the pre-processing-nlp
+
+* Review the pre-processing-nlp directory
+* Figure out how to use it in a simple way
+* Write clear instructions of how to use it
+* Create a file example of how to clean the text
+* Apply it in the coursera NLP course
+
+Then, go to modeling (classification):
+* Coursera Course: apply Logistic Regression;
+* Bayesian classification
+
+
 # Data Pipeline
 
 After feeling stuck for a whole day, I finally get this rep. 
