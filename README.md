@@ -6,12 +6,24 @@ Currently working on the pre-processing-nlp
 * Figure out how to use it in a simple way
 * Write clear instructions of how to use it
 * Create a file example of how to clean the text
+
 * Apply it in the coursera NLP course
+* Themes based on regular expressions -- I already have a function that does it -- refactoring it
+* Interpret topic modeling
+
+
+
 
 Then, go to modeling (classification):
 * Coursera Course: apply Logistic Regression;
 * Bayesian classification
 
+
+__Data engineering challenge:__
+* Write tests for each function
+* Create a python package map
+* Include optional arguments in stopword functions -- I found a good list to be used, but still want to set the option to chose another one
+* Include new functions in the preprocessing_custom.py file
 
 # Data Pipeline
 

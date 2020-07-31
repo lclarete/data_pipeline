@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: pre-processing-text
+Version: 0.1
+Summary: Apply NLP processing functions in order to clean text using regex, normalize English text through lemmatization and remove stopwords
+Home-page: #
+Author: lclarete
+Author-email: livia.clarete@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
