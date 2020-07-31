@@ -3,11 +3,10 @@
 Currently working on the pre-processing-nlp
 
 * Review the pre-processing-nlp directory
-* Figure out how to use it in a simple way
 * Write clear instructions of how to use it
 * Create a file example of how to clean the text
-
 * Apply it in the coursera NLP course
+
 * Themes based on regular expressions -- I already have a function that does it -- refactoring it
 * Interpret topic modeling
 
