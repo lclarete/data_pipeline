@@ -11,7 +11,7 @@ def correlation_matrix(df, figsize=(11,9)):
     # define the subplots
     f, ax = plt.subplots(figsize=(figsize))
     # define the colors
-    cmap = sns.diverging_palette(220, 10, as_cmap=True)
+    # cmap = sns.diverging_palette(220, 10, as_cmap=True)
     #plot the heatmap
     sns.heatmap(corr, 
                 annot=True, 

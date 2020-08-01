@@ -26,7 +26,6 @@ author='lclarete'
 author_email='livia.clarete@gmail.com'
 # license='MIT'
 packages=['data_pipeline']
-zip_safe=False
 
 setup(name=name,
 version=version,
@@ -35,5 +34,6 @@ url=url,
 author=author,
 author_email=author_email,
 # license=license,
-packages=packages,
-zip_safe=False)
+# zip_safe=False,
+packages=packages
+)
