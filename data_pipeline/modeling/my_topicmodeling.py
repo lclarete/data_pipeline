@@ -30,13 +30,20 @@ https://github.com/bmabey/pyLDAvis
 
 """
 
+# topic modeling for humans
 import gensim
 from gensim import corpora
+
+# visualize LDA
 import pyLDAvis
 import pyLDAvis.gensim
+
+# viz
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
+# tokenize a list
 from data_pipeline.pre_processing_text.split_ngrams import tokenize_list
 
 
