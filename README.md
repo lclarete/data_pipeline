@@ -2,10 +2,13 @@
 
 Currently working on the pre-processing-nlp
 
+* Release a package: https://docs.python.org/2.2/dist/creating-wininst.html
+
+* Apply it in the coursera NLP course
+
 * Review the pre-processing-nlp directory
 * Write clear instructions of how to use it
 * Create a file example of how to clean the text
-* Apply it in the coursera NLP course
 
 * Themes based on regular expressions -- I already have a function that does it -- refactoring it
 * Interpret topic modeling

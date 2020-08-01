@@ -2,7 +2,6 @@
 Process strings and list of strings.
 """
 
-
 from data_pipeline.pre_processing_text.clean_list_regex import sub_list_strings_list_regex, sub_several_regex_one_string
 
 from data_pipeline.pre_processing_text.norm_lemmatize import lemmatize_list, lemmatize_string
@@ -53,7 +52,7 @@ def preprocessing_string(string_text, list_of_regex, stopwords_list):
     s = sub_several_regex_one_string(string_text, list_of_regex)
 
     # lemmatize string
-    s = lemmatize_string(string_text)
+    s = lemmatize_string(s)
 
     # drop stopwords
     return remove_stopwords_string(s)

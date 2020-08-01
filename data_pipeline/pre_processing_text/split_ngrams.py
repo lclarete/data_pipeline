@@ -42,6 +42,8 @@ def tokenize_list(list_of_strings):
 # # words_finder = nltk.BigramCollocationFinder.from_words(clean_text)
 
 
+# ### using from nltk.tokenize import TweetTokenizer
+
 
 # ### Using spacy to tokenize
 
