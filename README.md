@@ -1,32 +1,32 @@
 # Next steps:
 
-Currently working on the pre-processing-nlp
+Data engineering tasks:
+
+* Fix the fit method inside the pre_processing class
+* Test the supervised class
+* Design classes to apply unsupervised algorithms
+* Write tests for each function
+* Create a python package map
+* Include optional arguments in stopword functions -- I found a good list to be used, but still want to set the option to chose another one
+
+
+Modeling the data:
 
 * Topic modeling
-* Themes based on regular expressions -- I already have a function that does it -- refactoring it
 * Interpret topic modeling
-
-
-
-
-Then, go to modeling (classification):
 * Coursera Course: apply Logistic Regression;
 * Bayesian classification
 
 
-__Data engineering challenge:__
-* Write tests for each function
-* Create a python package map
-* Include optional arguments in stopword functions -- I found a good list to be used, but still want to set the option to chose another one
-* Include new functions in the preprocessing_custom.py file
+Ruled based functions:
+
+* Themes based on regular expressions -- I already have a function that does it -- refactoring it
+
 
 # Data Pipeline
 
-After feeling stuck for a whole day, I finally get this rep. 
-I went over my short-whole coding experience to come up with the basic elements I need daily in order to perform my job.
-
-I'm still insecure if it is the best structure to build, but I'm going to follow this one anyway. The reason for this feeling is the pressure of my first attempt to organize an entire data pipeline for my self. The goal is to use this format to gether codes related to each of its steps. 
-I'll be working in a daily basis to improve it.
+Build data processing, and modeling pipelines. Built a 
+pipeline and a package to release. The goal is to use this format to gether codes related to each of the following steps. 
 
 Levels:
 - Get data: from APIs, scrapers, databases, files
@@ -35,12 +35,12 @@ Levels:
 - Modeling
 - Plot
 
-This mind map has helped me with the structural concept.
-https://miro.com/app/board/o9J_koNsYBo=/
+Structural concept: https://miro.com/app/board/o9J_koNsYBo=/
 
-For now, focused on NLP.
 
-# Linguistics and NLP
+
+
+# Theory: Linguistics and NLP
 This is a repository to study NLP -- also my way to organize my coding learning.
 
 
