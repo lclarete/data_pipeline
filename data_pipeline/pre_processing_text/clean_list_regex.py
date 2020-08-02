@@ -123,7 +123,40 @@ list_of_regex = list(d.values())
 """
 
 
-def sub_several_regex_one_string(string_text, list_of_regex):
+###### Write the regex in a file and import it 
+import re
+import string
+
+dict_regex = {
+    'hashtags': r'#(\w+)',
+    # returns not only mentions, but
+    # part of the email after the @
+    'mentions': r'@(\w+)',
+    'emails': r'',
+    'links': r'https?:\/\/.*[\r\n]*',
+    'remove_RT': '^RT[\s]+',
+    'numbers': r'\d+',
+    'symbols': r'',
+    'punctionation2': '[^\w\s]',
+    'punctionation': '[%s]' % re.escape(string.punctuation),
+    'periods': '\.',
+    'exclamation points': '\!',
+    'question marks': '\?',
+    'upper case words': '[A-Z][A-Z\d]+',
+    # https://stackoverflow.com/questions/39536390/match-unicode-emoji-in-python-regex
+    'emojis': '\d+(.*?)[\u263a-\U0001f645]',
+    'emojis_work': "['\U0001F300-\U0001F5FF'|'\U0001F600-\U0001F64F'|'\U0001F680-\U0001F6FF'|'\u2600-\u26FF\u2700-\u27BF']",
+    'upper case': '[A-Z][A-Z\d]+'
+}
+
+###
+
+list_of_regex = list(dict_regex.values())
+list_of_regex_keys = list(dict_regex.keys())
+
+
+
+def sub_several_regex_one_string(string_text, list_of_regex=list_of_regex):
     """
     Iterates over a list of regex, dropping them from a single string.
     
@@ -139,7 +172,7 @@ def sub_several_regex_one_string(string_text, list_of_regex):
     return string_text
     
 
-def sub_list_strings_list_regex(list_of_strings, list_of_regex):
+def sub_list_strings_list_regex(list_of_strings, list_of_regex=list_of_regex):
     """
     Replace a list of regex patterns over a list of strings
     
