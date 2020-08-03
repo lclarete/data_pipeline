@@ -23,10 +23,11 @@ class supervised_nlp:
     
     def fit(self, X, y):
         """
-        Trains the vectorizer and model together using
+        Train the vectorizer and model together using
         the users input training data.
         """
 
+        # fit and transform X data
         self.preprocessor.fit(X)
         train_data = self.preprocessor.transform(X)
         self.model.fit(train_data, y)
