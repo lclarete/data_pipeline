@@ -1,6 +1,9 @@
 """
 Create a class to implement data pipeline.
 
+from the class' author
+This allows us to sweep all of the preprocessing into a class where we can control the pieces and parts that go in, and can see what comes out. If we wanted to, we could even add a model into the class as well and put the whole pipe into a single class that manages all of our challenges. In this case, we've left it outside for demo purposes. This also saves all of the pieces together, so we can just pickle a class object and that will keep the whole structure of our models together - such as the vectorizer and the stemmer we used, as well as the cleaning routine, so we don't lose any of the pieces if we want to run it on new data later.
+
 https://github.com/ZWMiller/nlp_pipe_manager/blob/master/nlp_pipeline_manager/nlp_preprocessor.py
 
 # Example 1:
@@ -32,9 +35,10 @@ nlp.bow_table(lemmatize_list, list_of_strings)
 
 """
 
-from sklearn.feature_extraction.text import CountVectorizer
 import pickle
 import pandas as pd
+
+from sklearn.feature_extraction.text import CountVectorizer
 
 from data_pipeline.pre_processing_text.preprocess_string_list import preprocessing_list, preprocessing_string
 from data_pipeline.pre_processing_text.norm_lemmatize import lemmatize_string, lemmatize_list
@@ -62,6 +66,8 @@ class nlp_preprocessor:
         tokenizer: tokenizer to use; default is split into spaces
         cleaning_functions: how to clean the data
         """
+
+        # DATA
         
         # if tokenizer is not defined,
         if not tokenizer:
@@ -88,7 +94,8 @@ class nlp_preprocessor:
         self.vectorizer = vectorizer
         self._is_fit = False
                 
-    
+    # METHODS
+    # TO DO: split words and punctuation
     def splitter_string(self, string):
         """
         Default tokenizer that splits a string on spaces naively
@@ -96,7 +103,7 @@ class nlp_preprocessor:
         return string.split(' ')
 
 
-    def clean_text(self, lemmatizer, list_of_strings):
+    def clean_text(self, list_of_strings, lemmatizer=None):
         """
         Clean regex patterns, lemmatize words and remove stopwords
         Input:
@@ -108,7 +115,8 @@ class nlp_preprocessor:
         # clean regex patterns
         clean_text = sub_list_strings_list_regex(list_of_strings)
         # lemmatize words
-        clean_text = lemmatizer(clean_text)
+        if lemmatizer:
+            clean_text = lemmatizer(clean_text)
         # remove stopwords
         return remove_stopwords_list(clean_text)
     
@@ -119,15 +127,15 @@ class nlp_preprocessor:
         the user provided text
         """
 
-        # Why should I not use self.lemmatizer here?
-#         clean_text = self.cleaning_function(list_of_strings, self.tokenizer, self.lemmatizer)
-        preprocessed_text = self.cleaning_function(self.lemmatizer, list_of_strings)
+        # pay attention to the next function to be written
+        # the lemmatizer is the first argument
+        preprocessed_text = self.cleaning_function(list_of_strings, self.lemmatizer)
 
         self.vectorizer.fit(preprocessed_text)
         self._is_fit = True
     
 
-    def transform(self, list_of_strings, return_clean_text=False):
+    def transform(self, list_of_strings, return_preprocessed_text=False):
         """
         Cleans any provided data and then transforms data
         into a vectorized format based on the fit function.
@@ -135,12 +143,13 @@ class nlp_preprocessor:
         """
         if not self._is_fit:
             raise ValueError("Must fit the models before transforming!")
-#         clean_text = self.cleaning_function(list_of_strings, self.tokenizer, self.lemmatizer)
-        clean_text = self.cleaning_function(self.lemmatizer, list_of_strings)
+            
+        preprocessed_text = self.cleaning_function(list_of_strings, self.lemmatizer)
 
-        if return_clean_text:
-            return clean_text
-        return self.vectorizer.transform(clean_text)
+        if return_preprocessed_text:
+            return preprocessed_text
+        
+        return self.vectorizer.transform(preprocessed_text)
 
     
     def bow_table(self, list_of_strings):
@@ -179,3 +188,4 @@ class nlp_preprocessor:
         if filename[-4:] != '.mdl':
             filename += '.mdl'
         self.__dict__ = pickle.load(open(filename,'rb'))
+
