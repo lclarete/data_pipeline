@@ -45,14 +45,15 @@ from data_pipeline.pre_processing_text.clean_list_regex import sub_list_strings_
 
 class nlp_preprocessor:
         
-    def __init__(self, vectorizer=CountVectorizer(), 
-                 tokenizer=None, 
-                 cleaning_function=None, 
-                 lemmatizer=None):
+    def __init__(self, 
+                vectorizer=CountVectorizer(), 
+                tokenizer=None, 
+                cleaning_function=None, 
+                lemmatizer=None):
         
         """
-        A class for pipelineing data in NLP problems. 
-        User provides a series of tools (functions), and the
+        A class for preprocessing data in NLP problems. 
+        User provides a serie of tools (functions), and the
         class manages all the training, transforming and 
         modificaion of the text data.
 
@@ -72,7 +73,8 @@ class nlp_preprocessor:
         # if cleaning_function is not defined,
         if not cleaning_function:
             # use the function clean_text as default
-            # TO DO: drop regex dict and stopwords data out of the .py files
+            # TO DO: drop regex dict and stopwords data out of the 
+            # sub_list_strings_list_regex.py files
             # TO DO: structure the files in a way I can read the regex and 
             # stopwords as arguments inside the function
             cleaning_function = self.clean_text
@@ -111,9 +113,7 @@ class nlp_preprocessor:
         return remove_stopwords_list(clean_text)
     
     
-    # for some reason, I can't use self.lemmatizer
-    # TO DO: drop lemmatizer as the function argument
-    def fit(self, lemmatizer, list_of_strings):
+    def fit(self, list_of_strings):
         """
         Cleans the data and then fits the vectorizer with
         the user provided text
@@ -121,13 +121,13 @@ class nlp_preprocessor:
 
         # Why should I not use self.lemmatizer here?
 #         clean_text = self.cleaning_function(list_of_strings, self.tokenizer, self.lemmatizer)
-        preprocessed_text = self.cleaning_function(lemmatizer, list_of_strings)
+        preprocessed_text = self.cleaning_function(self.lemmatizer, list_of_strings)
 
         self.vectorizer.fit(preprocessed_text)
         self._is_fit = True
     
 
-    def transform(self, lemmatizer, list_of_strings, return_clean_text=False):
+    def transform(self, list_of_strings, return_clean_text=False):
         """
         Cleans any provided data and then transforms data
         into a vectorized format based on the fit function.
@@ -136,14 +136,14 @@ class nlp_preprocessor:
         if not self._is_fit:
             raise ValueError("Must fit the models before transforming!")
 #         clean_text = self.cleaning_function(list_of_strings, self.tokenizer, self.lemmatizer)
-        clean_text = self.cleaning_function(lemmatizer, list_of_strings)
+        clean_text = self.cleaning_function(self.lemmatizer, list_of_strings)
 
         if return_clean_text:
             return clean_text
         return self.vectorizer.transform(clean_text)
 
     
-    def bow_table(self, lemmatizer, list_of_strings):
+    def bow_table(self, list_of_strings):
         """
         Apply the transformer to format a table counting the number of words per document
         Input:
@@ -152,7 +152,7 @@ class nlp_preprocessor:
         Output:
             table counting the number of words per document
         """
-        data = self.transform(lemmatizer, list_of_strings).toarray()
+        data = self.transform(list_of_strings).toarray()
         columns = self.vectorizer.get_feature_names()
         return pd.DataFrame(data, columns=columns)
     
@@ -179,5 +179,3 @@ class nlp_preprocessor:
         if filename[-4:] != '.mdl':
             filename += '.mdl'
         self.__dict__ = pickle.load(open(filename,'rb'))
-
-
