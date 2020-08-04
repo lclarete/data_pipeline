@@ -2,7 +2,6 @@
 
 Data engineering tasks:
 
-* Design classes to apply unsupervised algorithms
 * Write tests for each function
 * Create a python package map
 * Include optional arguments in stopwords functions -- I found a good list to be used, but still want to set the option to chose another one
@@ -82,7 +81,7 @@ Tools to get used to:
 * https://brightplanet.com/2013/06/25/twitter-firehose-vs-twitter-api-whats-the-difference-and-why-should-you-care/
 
 
-# MASTER
+# Master
 
 ## Benefits from master's degree
 * Learn about Linguistics, NLP and speech recognition
