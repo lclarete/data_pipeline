@@ -120,7 +120,7 @@ class topic_modeling_nlp:
         Load the pipeline.
         """
         if type(filename) != str:
-            raise TypeError("Filke must be a string.")
+            raise TypeError("File must be a string.")
         if filename[-4] != ".mdl":
             filename += ".mdl"
         self.__dict__ = pickle.load(open(filename, "rb"))
