@@ -25,13 +25,29 @@ Not even run. I've got bad results using it so far.
 
 from textblob import Word
 Word('running').lemmatize()
+
+
+# Lemmatize Portuguese:
+from nltk import PorterStemmer, RSLPStemmer
+
+def portuguese_stemmer(string):
+    porter = PorterStemmer()
+    return [porter.stem(w) for w in word_tokenize(string)]
+
+
+# http://snowball.tartarus.org/algorithms/portuguese/stemmer.html
+
+
 """
 
 import spacy
+from nltk.tokenize import word_tokenize
 
-nlp = spacy.load('en_core_web_sm', disable=['tagger', 'parser', 'ner'])
 
-def lemmatize_string(string_text, nlp=nlp):
+nlp_en = spacy.load('en_core_web_sm', disable=['tagger', 'parser', 'ner'])
+nlp_pt = spacy.load('pt_core_news_sm', disable=['tagger', 'parser', 'ner'])
+
+def lemmatize_string(string_text, nlp=nlp_en):
     """
     Iterate through each word in a string and lemmatize it.
     The process require a trained model, the variable nlp
@@ -56,7 +72,7 @@ def lemmatize_string(string_text, nlp=nlp):
     return lemma
 
 
-def lemmatize_list(list_of_strings, nlp=nlp):
+def lemmatize_list(list_of_strings, nlp=nlp_en):
     """
     Apply the lemmatization function to a list of string texts.
     Input:
@@ -68,4 +84,8 @@ def lemmatize_list(list_of_strings, nlp=nlp):
     """
 
     return [lemmatize_string(w) for w in list_of_strings]
+
+
+
+
 
