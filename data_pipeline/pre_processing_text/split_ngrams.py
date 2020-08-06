@@ -9,6 +9,11 @@ This is the space to learn and test them.
 
 """
 
+from nltk.tokenize import word_tokenize, sent_tokenize, TweetTokenizer
+
+
+
+
 
 def tokenize(string_text):
     """
