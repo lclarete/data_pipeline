@@ -38,7 +38,7 @@ today = date.today()
 
 
 # Gsheet parameters
-new_sheet_name = 'dashboards_google_trends_test'
+new_sheet_name = 'rc_interview'
 # new_tab_list = ['interest_over_time', 'interest_by_region', 'related_queries', 'related_topics', 'suggestions']
 new_tab = 'pytrend_data'
 
