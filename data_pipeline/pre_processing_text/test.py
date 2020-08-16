@@ -1,1 +1,0 @@
-from pre_processing_text import lemmatize_list
