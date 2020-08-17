@@ -29,7 +29,7 @@ from keras.layers.embeddings import Embedding
 from keras.optimizers import Adam
 
 
-def create_sequencial_model(list_of_strings, vocab_size, learn_rate):
+def create_sequencial_model(list_of_strings, vocab_size, learn_rate, embedding_matrix):
 
     # create a model
     model = Sequential()
@@ -48,7 +48,9 @@ def create_sequencial_model(list_of_strings, vocab_size, learn_rate):
         # number of dimensions for each word vector to be created
         20, 
         # len of the longest sentence
-        input_length=len_long_sentence))
+        input_length=len_long_sentence,
+        weights=[embedding_matrix]
+        ))
 
     # flatten the layer so it can be used directly with 
     # the densely connected layer
@@ -75,7 +77,7 @@ def create_sequencial_model(list_of_strings, vocab_size, learn_rate):
     model.compile(
         optimizer=adam,
         # loss function for binary classification
-        loss='binary_crossentropy',
+        loss='categorical_crossentropy',
         metrics=['acc']
     )
     
@@ -122,7 +124,7 @@ def create_functional_model(list_of_strings, vocab_size, embedding_matrix):
     # Compile data
     model.compile(
         optimizer='adam', 
-        loss='binary_crossentropy',
+        loss='crossentropy',
         metrics=['acc'])
     
     return model
