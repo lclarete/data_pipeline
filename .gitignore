@@ -8,3 +8,11 @@
 *.csv
 *.mdl
 * pdf
+
+# config files
+config*.txt
+
+
+# deployed directories
+dist
+build
