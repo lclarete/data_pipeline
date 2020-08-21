@@ -1,4 +1,6 @@
 """
+Working with emojis: https://emojipedia.org/
+
 Using the package advertools to get emojis from text
 https://advertools.readthedocs.io/en/master/advertools.emoji.html
 """
