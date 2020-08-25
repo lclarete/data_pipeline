@@ -8,6 +8,7 @@
 *.csv
 *.mdl
 * pdf
+* zip
 
 # config files
 config*.txt
