@@ -51,7 +51,24 @@ def counting_emojis(list_of_strings, type_of_emoji='top_emoji_text', overview=Fa
     
     else:
         return df
-    
+
+
+def emojis_overview(list_of_strings):
+    """
+    Returns the number of total emojis,
+    and the average per post
+
+    Input:
+        list_of_strings: string or list of strings
+    Output:
+        dataframe with the emoji's metrics
+
+    """
+    metrics_post = ad.extract_emoji(list_of_strings)['overview']
+    df_metrics_post = pd.DataFrame(list(metrics_post.items()))
+    df_metrics_post.columns = ['description', 'metric']
+
+    return df_metrics_post
 
 
 ## apply the function above to retrieve dataframes
@@ -75,9 +92,7 @@ def retrieving_categ_emojis(list_of_strings):
     # iterate over the categories 
     for categ in emojis_categ:
         # apply the function to count the number of emojis
-        emoji_dfs = return_df_count_emojis(df.tweet_full_text, 
-                                           type_of_emoji=categ,
-                                           overview=False)
+        emoji_dfs = counting_emojis(list_of_strings, type_of_emoji=categ)
         # create a new column to describe the information retrieved
         emoji_dfs['type'] = categ
         # concat the datasets
