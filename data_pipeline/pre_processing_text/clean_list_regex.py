@@ -22,6 +22,11 @@ The last one formats a dataframe.
 
 import re
 import pandas as pd
+import string
+
+# add arguments for the map function
+import functools
+
 
 
 # --------- string + one regex --------- #
@@ -52,10 +57,11 @@ def re_count_match_string(string_text, regex):
 def re_sub_match_string(string_text, regex):
     """
     Matches and replace a regular expression pattern within a list.
-    Args:
+    Input:
         string_text: text format that will be searched
-        regex: regular expression pattern to be searched
-    Returns a lower case cleaned string
+        regex: list of regular expression pattern to be searched
+    Output:
+        Returns a lower case cleaned string
     """
     # regex = re.compile(regex)
     # return regex.sub('', string_text.lower()).strip()
@@ -124,8 +130,6 @@ list_of_regex = list(d.values())
 
 
 ###### Write the regex in a file and import it 
-import re
-import string
 
 dict_regex = {
     'hashtags': r'#(\w+)',
@@ -204,3 +208,45 @@ def list_to_df(list_of_outputs, list_of_regex_keys):
     df = df.add_prefix('count_')
     
     return df
+
+
+##### REPLACE PATTERS
+
+def replacing_re_string(string, regex_dict):
+    """
+    Replace a word per another within a string
+    
+    Inputs:
+        string:
+        d: dictionary with strings to replace and to be replaced
+    Output:
+        replace a cleaned string
+    """
+    for k, v in regex_dict.items():
+        string = re.sub(k, v, string)
+    return string
+
+
+
+def replacing_re_list(list_of_strings, regex_dict):
+    """
+    Applying the replacing_string_regex fucntion 
+    to a list of strings
+    
+    Inputs:
+        list_of_strings: list of strings
+        regex_dict: dictionary of regex patterns. 
+            The keys as the patterns to be found, and
+            the values as the patterns to be replaced
+    
+    Output:
+        list of strings with the replaced patterns
+        
+    If dealing with dataframes, you can use the apply method.
+    Remember to include the args within a tupla
+    df.body.apply(replacing_dict_regex, args=(d,))
+    """
+    
+    # functools.partial to consider the argument 
+    # of the replacing_re_string function
+    return list(map(functools.partial(replacing_re_string, regex_dict=regex_dict), list_of_strings))
