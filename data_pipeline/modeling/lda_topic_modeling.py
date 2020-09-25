@@ -1,4 +1,7 @@
 """
+Functions highly inspired by this tutorial:
+https://www.machinelearningplus.com/nlp/topic-modeling-visualization-how-to-present-results-lda-models/#9.-Word-Clouds-of-Top-N-Keywords-in-Each-Topic
+
 """
 
 import sys
