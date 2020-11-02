@@ -136,7 +136,9 @@ dict_regex = {
     # returns not only mentions, but
     # part of the email after the @
     'mentions': r'@(\w+)',
-    'emails': r'',
+    'parentheses_1':r'(',
+    'parentheses_2':r')',
+    'emails': '[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+',
     'links': r'https?:\/\/.*[\r\n]*',
     'remove_RT': '^RT[\s]+',
     'numbers': r'\d+',

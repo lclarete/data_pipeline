@@ -164,7 +164,7 @@ def sent_topics_sorted_df(df_topic_sents_keywords):
     for i, grp in sent_topics_outdf_grpd:
         sent_topics_sorteddf_mallet = pd.concat([sent_topics_sorteddf_mallet,
                                                  grp.sort_values(['Topic_Perc_Contrib'],
-                                                                 ascending=False).head(1)], axis=0)
+                                                                 ascending=False)], axis=0)
 
     # format
     sent_topics_sorteddf_mallet.reset_index(drop=True, inplace=True)
@@ -218,7 +218,7 @@ def frequency_distribution_word_counts_per_topic(df_data):
 
 # Word clouds of Top N keywords in each topic
 
-def word_clouds_per_topic(lda_model):
+def word_clouds_per_topic(lda_model, stop_words=stop_words):
     cols = [color for name, color in mcolors.TABLEAU_COLORS.items()]  # more colors: 'mcolors.XKCD_COLORS'
 
     cloud = WordCloud(stopwords=stop_words,
