@@ -7,7 +7,7 @@ Reads a google sheet and returs a dataframe
 
 def gsheet_returns_df(sheet_name, tab_name):
     # point the client_secret.json
-    url = '/Users/liviaclarete/gdrive/code/functions/gdocs/googleKey_pesq7/client_secret.json'
+    url = '/Users/liviaclarete/coding/apis_keys/googleKey_pesq7/client_secret.json'
     # reading stopwords from a google sheet
     gc = pygsheets.authorize(client_secret=url)
     # Open spreadsheet and then workseet
