@@ -108,5 +108,5 @@ def read_csv_twitter(path, cols=cols, dtypes=dtypes):
     df['year'] = df.date.dt.year
     df['month'] = df.date.dt.month_name()
     df['month_year'] = df.date.dt.to_period('M')
-    
     return df
+    
