@@ -18,8 +18,8 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 # variables
 START_DATE = "Jan 13, 2021"
-END_DATE = "Oct 15, 2021"
-KEYWORD = "avengers"
+END_DATE   = "Oct 15, 2021"
+KEYWORD    = "avengers"
 REQUEST_COUNT = 4 #Each request returns 50 videos
 
 def textToDate(string):
@@ -51,17 +51,17 @@ def videoStats(url):
     return req
 
 start = textToDate(START_DATE)
-end = textToDate(END_DATE)
+end   = textToDate(END_DATE)
 
 youtube = build("youtube", "v3", developerKey=API_KEY)
 
-quarter = (end-start)/REQUEST_COUNT
+quarter     = (end-start)/REQUEST_COUNT
 local_start = start
-local_end = start+quarter
+local_end   = start+quarter
 
 big_data_list = []
 for _ in range(REQUEST_COUNT):
-    publishedAfter = dateToTime(local_start)
+    publishedAfter  = dateToTime(local_start)
     publishedBefore = dateToTime(local_end)
     req = createResponse(publishedAfter, publishedBefore)
     res = req.execute()
